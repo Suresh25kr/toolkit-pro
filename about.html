@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YMFH28T9FY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YMFH28T9FY');
+</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7170653113623294" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="description" content="Learn about InstaPDF Tools — free online PDF and image tools built for everyone. No signup, no limits, 100% free.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #12121a;
+    --bg3: #1a1a26;
+    --surface: #1e1e2e;
+    --border: rgba(255,255,255,0.07);
+    --accent: #6c63ff;
+    --accent2: #ff6b6b;
+    --accent3: #43e8b0;
+    --text: #f0f0f8;
+    --text2: #9090b0;
+    --text3: #5a5a7a;
+    --font-head: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --radius: 16px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    line-height: 1.8;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(108,99,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(108,99,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none; z-index: 0;
+  }
+  .blob { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; opacity: 0.3; }
+  .blob-1 { width: 500px; height: 500px; background: #6c63ff; top: -150px; left: -100px; }
+  .blob-2 { width: 350px; height: 350px; background: #43e8b0; bottom: 100px; right: -100px; }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 68px;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-head); font-weight: 800; font-size: 1.4rem;
+    background: linear-gradient(135deg, #6c63ff, #43e8b0);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    text-decoration: none;
+  }
+  .nav-back { color: var(--text2); text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+  .nav-back:hover { color: var(--text); }
+
+  .container { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 4rem 5%; }
+
+  .page-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(108,99,255,0.12); border: 1px solid rgba(108,99,255,0.3);
+    color: #a99fff; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.05em;
+    padding: 5px 14px; border-radius: 50px; margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: var(--font-head); font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1rem;
+  }
+  h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, #6c63ff 0%, #43e8b0 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-sub { color: var(--text2); font-size: 1.1rem; max-width: 600px; margin-bottom: 3rem; line-height: 1.7; }
+
+  /* STATS ROW */
+  .stats-row {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem; margin-bottom: 4rem;
+  }
+  .stat-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem; text-align: center;
+    transition: border-color 0.2s;
+  }
+  .stat-card:hover { border-color: rgba(108,99,255,0.3); }
+  .stat-num { font-family: var(--font-head); font-size: 2rem; font-weight: 800; margin-bottom: 0.25rem; }
+  .stat-num.purple { background: linear-gradient(135deg, #6c63ff, #a99fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-num.green { background: linear-gradient(135deg, #43e8b0, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-num.red { background: linear-gradient(135deg, #ff6b6b, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-lbl { color: var(--text3); font-size: 0.8rem; }
+
+  /* SECTIONS */
+  h2 { font-family: var(--font-head); font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; }
+
+  .section { margin-bottom: 3rem; }
+  .section p { color: var(--text2); font-size: 0.95rem; margin-bottom: 0.75rem; }
+
+  /* VALUES */
+  .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .value-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem;
+    transition: all 0.25s;
+  }
+  .value-card:hover { border-color: rgba(108,99,255,0.25); transform: translateY(-3px); }
+  .value-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+  .value-card h3 { font-family: var(--font-head); font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .value-card p { color: var(--text2); font-size: 0.85rem; line-height: 1.6; margin: 0; }
+
+  /* TOOLS LIST */
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 1.5rem; }
+  .tool-pill {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 0.75rem 1rem;
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.88rem; color: var(--text2);
+    transition: all 0.2s;
+  }
+  .tool-pill:hover { border-color: rgba(108,99,255,0.3); color: var(--text); }
+  .tool-pill span { font-size: 1rem; }
+
+  /* MISSION BOX */
+  .mission-box {
+    background: linear-gradient(135deg, rgba(108,99,255,0.08), rgba(67,232,176,0.05));
+    border: 1px solid rgba(108,99,255,0.2);
+    border-radius: var(--radius); padding: 2.5rem;
+    text-align: center; margin-bottom: 3rem;
+  }
+  .mission-box h2 { font-size: 1.4rem; margin-bottom: 0.75rem; }
+  .mission-box p { color: var(--text2); font-size: 1rem; max-width: 550px; margin: 0 auto; }
+
+  /* CTA */
+  .cta-box {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 2.5rem;
+    text-align: center; margin-top: 3rem;
+  }
+  .cta-box h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .cta-box p { color: var(--text2); margin-bottom: 1.5rem; }
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent); color: #fff;
+    padding: 0.75rem 2rem; border-radius: 50px;
+    font-family: var(--font-body); font-size: 1rem; font-weight: 500;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+
+  /* CONTACT */
+  .contact-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+  .contact-item {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1rem 1.25rem;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.9rem; flex: 1; min-width: 200px;
+  }
+  .contact-item .icon { font-size: 1.2rem; }
+  .contact-item a { color: var(--accent); text-decoration: none; }
+  .contact-item a:hover { text-decoration: underline; }
+
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid var(--border);
+    padding: 2rem 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem; margin-top: 2rem;
+  }
+  .footer-logo { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; color: var(--text2); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { color: var(--text3); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--text2); }
+  footer p { color: var(--text3); font-size: 0.8rem; }
+</style>
+</head>
+<body>
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+
+<nav>
+  <a class="nav-logo" href="/">InstaPDF Tools</a>
+  <a class="nav-back" href="/">← Back to Tools</a>
+</nav>
+
+<div class="container">
+
+  <div class="page-badge">👋 About Us</div>
+  <h1>Tools for <em>Everyone.</em><br>Always Free.</h1>
+  <p class="hero-sub">InstaPDF Tools was built with one simple goal — give everyone access to powerful PDF and image tools without paying a single rupee or creating an account.</p>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num purple">16+</div>
+      <div class="stat-lbl">Free Tools</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num green">0</div>
+      <div class="stat-lbl">Files Stored</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num red">100%</div>
+      <div class="stat-lbl">Free Forever</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num purple">∞</div>
+      <div class="stat-lbl">Files Processed</div>
+    </div>
+  </div>
+
+  <!-- MISSION -->
+  <div class="mission-box">
+    <h2>🎯 Our Mission</h2>
+    <p>To make professional-grade file tools accessible to every student, professional, and business owner — completely free, forever. No hidden charges, no forced signups, no data collection.</p>
+  </div>
+
+  <!-- STORY -->
+  <div class="section">
+    <h2>Our Story</h2>
+    <p>We started InstaPDF Tools because we were frustrated with existing PDF tools — they're either expensive, require signups, have daily limits, or secretly store your files on their servers.</p>
+    <p>We built a better alternative. Every tool on InstaPDF Tools runs entirely in your browser. That means your files never leave your device — not even for a second. We can't see your files because they never reach us.</p>
+    <p>Based in India 🇮🇳, we built this for students, professionals, and small business owners who need reliable tools without the price tag.</p>
+  </div>
+
+  <!-- VALUES -->
+  <div class="section">
+    <h2>What We Stand For</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🔒</div>
+        <h3>Privacy First</h3>
+        <p>Your files are processed in your browser. We never see, store, or access your documents.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">⚡</div>
+        <h3>Instant Results</h3>
+        <p>No waiting, no queues. Our tools process your files in seconds using your device's power.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">💸</div>
+        <h3>Always Free</h3>
+        <p>No subscriptions, no daily limits, no credit card required. Free for everyone, forever.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">📱</div>
+        <h3>Works Everywhere</h3>
+        <p>Mobile, tablet, or desktop — our tools work on any device with a modern browser.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🚫</div>
+        <h3>No Signup Needed</h3>
+        <p>Just open the tool, upload your file, and download the result. That simple.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌍</div>
+        <h3>Made for India</h3>
+        <p>Built with Indian users in mind — fast, simple, and accessible on all internet speeds.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOOLS -->
+  <div class="section">
+    <h2>Our Tools</h2>
+    <p>We offer 16+ free tools across PDF and image processing:</p>
+    <div class="tools-grid">
+      <div class="tool-pill"><span>🗜️</span> Compress PDF</div>
+      <div class="tool-pill"><span>🔗</span> Merge PDFs</div>
+      <div class="tool-pill"><span>✂️</span> Split PDF</div>
+      <div class="tool-pill"><span>🖼️</span> PDF to JPG</div>
+      <div class="tool-pill"><span>📄</span> JPG to PDF</div>
+      <div class="tool-pill"><span>📦</span> Compress Image</div>
+      <div class="tool-pill"><span>↔️</span> Resize Image</div>
+      <div class="tool-pill"><span>🔄</span> Convert Image</div>
+      <div class="tool-pill"><span>🔁</span> Rotate PDF</div>
+      <div class="tool-pill"><span>🔓</span> Unlock PDF</div>
+      <div class="tool-pill"><span>🔒</span> Protect PDF</div>
+      <div class="tool-pill"><span>📝</span> Word to PDF</div>
+      <div class="tool-pill"><span>🔲</span> Crop Image</div>
+      <div class="tool-pill"><span>🪄</span> Remove Background</div>
+      <div class="tool-pill"><span>🏷️</span> Add Watermark</div>
+      <div class="tool-pill"><span>📋</span> Image to Text</div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section">
+    <h2>Get in Touch</h2>
+    <p>Have a suggestion, found a bug, or want to collaborate? We'd love to hear from you!</p>
+    <div class="contact-row">
+      <div class="contact-item">
+        <span class="icon">📧</span>
+        <div>
+          <div style="font-size:0.75rem;color:var(--text3);margin-bottom:2px">Email</div>
+          <a href="mailto:contact@instapdftools.com">contact@instapdftools.com</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="icon">🌐</span>
+        <div>
+          <div style="font-size:0.75rem;color:var(--text3);margin-bottom:2px">Website</div>
+          <a href="https://instapdftools.com">instapdftools.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h2>Ready to Get Started?</h2>
+    <p>Join thousands of users who use InstaPDF Tools every day — for free.</p>
+    <a href="/" class="btn-primary">Try Our Tools →</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">InstaPDF Tools</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/privacy.html">Privacy Policy</a>
+    <a href="/about.html">About</a>
+  </div>
+  <p>© 2026 InstaPDF Tools. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
