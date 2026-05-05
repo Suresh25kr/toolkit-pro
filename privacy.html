@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YMFH28T9FY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YMFH28T9FY');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — InstaPDF Tools</title>
+<meta name="description" content="Privacy Policy for InstaPDF Tools. Learn how we handle your data and files.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #12121a;
+    --bg3: #1a1a26;
+    --surface: #1e1e2e;
+    --border: rgba(255,255,255,0.07);
+    --accent: #6c63ff;
+    --accent3: #43e8b0;
+    --text: #f0f0f8;
+    --text2: #9090b0;
+    --text3: #5a5a7a;
+    --font-head: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --radius: 16px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    line-height: 1.8;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(108,99,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(108,99,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 68px;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 1.4rem;
+    background: linear-gradient(135deg, #6c63ff, #43e8b0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+  }
+  .nav-back {
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--text); }
+
+  /* CONTENT */
+  .container {
+    position: relative; z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 5%;
+  }
+
+  .page-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(108,99,255,0.12);
+    border: 1px solid rgba(108,99,255,0.3);
+    color: #a99fff;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: var(--font-head);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+  h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, #6c63ff 0%, #43e8b0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .last-updated {
+    color: var(--text3);
+    font-size: 0.85rem;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* SECTIONS */
+  .section {
+    margin-bottom: 2.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+  }
+  .section:hover {
+    border-color: rgba(108,99,255,0.2);
+    transition: border-color 0.3s;
+  }
+
+  h2 {
+    font-family: var(--font-head);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+  }
+  h2 .icon {
+    width: 32px; height: 32px;
+    background: rgba(108,99,255,0.15);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  p {
+    color: var(--text2);
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+  p:last-child { margin-bottom: 0; }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+  }
+  ul li {
+    color: var(--text2);
+    font-size: 0.95rem;
+    padding: 0.3rem 0;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+  ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+
+  .highlight-box {
+    background: rgba(67,232,176,0.06);
+    border: 1px solid rgba(67,232,176,0.2);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-top: 1rem;
+  }
+  .highlight-box p {
+    color: #43e8b0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* CONTACT CARD */
+  .contact-card {
+    background: linear-gradient(135deg, rgba(108,99,255,0.1), rgba(67,232,176,0.05));
+    border: 1px solid rgba(108,99,255,0.25);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+  }
+  .contact-card h3 {
+    font-family: var(--font-head);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .contact-card p { margin-bottom: 1rem; }
+  .contact-email {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .contact-email:hover { opacity: 0.85; text-decoration: none; }
+
+  /* FOOTER */
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid var(--border);
+    padding: 2rem 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+    margin-top: 2rem;
+  }
+  .footer-logo { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; color: var(--text2); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { color: var(--text3); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--text2); }
+  footer p { color: var(--text3); font-size: 0.8rem; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="/">InstaPDF Tools</a>
+  <a class="nav-back" href="/">← Back to Tools</a>
+</nav>
+
+<!-- CONTENT -->
+<div class="container">
+
+  <div class="page-badge">📋 Legal</div>
+  <h1>Privacy <em>Policy</em></h1>
+  <div class="last-updated">Last updated: May 6, 2026 &nbsp;·&nbsp; Effective immediately</div>
+
+  <div class="section">
+    <h2><span class="icon">👋</span> Introduction</h2>
+    <p>Welcome to InstaPDF Tools ("we", "our", or "us"). We operate the website <a href="https://instapdftools.com">instapdftools.com</a>, which provides free online PDF and image processing tools.</p>
+    <p>This Privacy Policy explains how we collect, use, and protect your information when you use our services. By using our website, you agree to the terms described in this policy.</p>
+    <div class="highlight-box">
+      <p>✅ Your files are processed entirely in your browser and are NEVER uploaded to our servers.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2><span class="icon">📂</span> File Processing & Your Data</h2>
+    <p>InstaPDF Tools processes all files directly in your browser using JavaScript. This means:</p>
+    <ul>
+      <li>Your files never leave your device</li>
+      <li>We do not upload, store, or access your files</li>
+      <li>No file data is sent to our servers</li>
+      <li>Your documents remain 100% private and secure</li>
+      <li>Files are automatically cleared when you close the browser tab</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2><span class="icon">📊</span> Information We Collect</h2>
+    <p>We collect limited, non-personal information to improve our services:</p>
+    <ul>
+      <li>Pages you visit and tools you use (via Google Analytics)</li>
+      <li>Your general location (country/city level only)</li>
+      <li>Device type, browser type, and screen size</li>
+      <li>How long you spend on our website</li>
+      <li>How you found our website (search engine, direct, social media)</li>
+    </ul>
+    <p>We do NOT collect your name, email address, or any personally identifiable information unless you contact us directly.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="icon">🍪</span> Cookies</h2>
+    <p>We use cookies to understand how visitors use our website. These cookies are set by:</p>
+    <ul>
+      <li><strong style="color:var(--text)">Google Analytics</strong> — tracks website traffic and usage patterns</li>
+      <li><strong style="color:var(--text)">Google AdSense</strong> — shows relevant advertisements to visitors</li>
+    </ul>
+    <p>You can disable cookies in your browser settings at any time. This will not affect your ability to use our tools.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="icon">📢</span> Advertising</h2>
+    <p>We use Google AdSense to display advertisements on our website. Google may use cookies to show you ads based on your interests and previous visits to our site and other sites on the internet.</p>
+    <ul>
+      <li>Google's use of advertising cookies enables it to serve ads based on your visit to our site</li>
+      <li>You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank">Google Ads Settings</a></li>
+      <li>We do not control the content of advertisements shown on our site</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2><span class="icon">🔗</span> Third Party Services</h2>
+    <p>Our website uses the following third-party services:</p>
+    <ul>
+      <li><strong style="color:var(--text)">Google Analytics</strong> — website traffic analysis (<a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>)</li>
+      <li><strong style="color:var(--text)">Google AdSense</strong> — advertising (<a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>)</li>
+      <li><strong style="color:var(--text)">Vercel</strong> — website hosting (<a href="https://vercel.com/legal/privacy-policy" target="_blank">Privacy Policy</a>)</li>
+      <li><strong style="color:var(--text)">Google Fonts</strong> — web typography (<a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>)</li>
+    </ul>
+    <p>Each of these services has their own privacy policies governing how they handle your data.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="icon">👶</span> Children's Privacy</h2>
+    <p>Our website is not directed at children under the age of 13. We do not knowingly collect personal information from children. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="icon">🌍</span> International Users</h2>
+    <p>InstaPDF Tools is accessible worldwide. By using our website, you consent to your information being processed in accordance with this Privacy Policy. Users in the European Union (EU) have additional rights under GDPR, including the right to access, correct, and delete their data.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="icon">🔄</span> Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last updated" date at the top of this page. We encourage you to review this policy periodically. Continued use of our website after changes constitutes your acceptance of the updated policy.</p>
+  </div>
+
+  <div class="contact-card">
+    <h3>Questions about Privacy?</h3>
+    <p>If you have any questions about this Privacy Policy or how we handle your data, feel free to reach out to us.</p>
+    <a href="mailto:contact@instapdftools.com" class="contact-email">📧 contact@instapdftools.com</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">InstaPDF Tools</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/about.html">About</a>
+  </div>
+  <p>© 2026 InstaPDF Tools. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
