@@ -342,5 +342,66 @@
   <p>© 2026 InstaPDF Tools. All rights reserved.</p>
 </footer>
 
+<!-- COOKIE CONSENT BANNER -->
+<style>
+#consent-overlay{display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px)}
+#consent-banner{display:none;position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:9999;width:calc(100% - 2rem);max-width:680px;background:#1e1e2e;border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:1.5rem;font-family:"DM Sans",sans-serif}
+#consent-banner h3{font-family:"Syne",sans-serif;font-size:1.1rem;font-weight:700;color:#f0f0f8;margin-bottom:.5rem}
+#consent-banner p{color:#9090b0;font-size:.85rem;line-height:1.6;margin-bottom:1.25rem}
+#consent-banner p a{color:#6c63ff;text-decoration:none}
+.consent-toggles{display:flex;flex-direction:column;gap:8px;margin-bottom:1.25rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:1rem}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.toggle-info strong{font-size:.85rem;color:#f0f0f8;font-weight:500;display:block;margin-bottom:2px}
+.toggle-info span{font-size:.78rem;color:#6060a0}
+.toggle-switch{position:relative;width:40px;height:22px;flex-shrink:0}
+.toggle-switch input{opacity:0;width:0;height:0}
+.toggle-slider{position:absolute;inset:0;background:rgba(255,255,255,0.1);border-radius:22px;cursor:pointer;transition:background .25s}
+.toggle-slider::before{content:"";position:absolute;width:16px;height:16px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .25s}
+.toggle-switch input:checked+.toggle-slider{background:#6c63ff}
+.toggle-switch input:checked+.toggle-slider::before{transform:translateX(18px)}
+.toggle-switch input:disabled+.toggle-slider{cursor:not-allowed;opacity:.5}
+.consent-btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn-consent-all{flex:1;min-width:140px;background:#6c63ff;color:#fff;border:none;border-radius:50px;padding:.65rem 1.25rem;font-family:"DM Sans",sans-serif;font-size:.875rem;font-weight:500;cursor:pointer}
+.btn-consent-necessary{flex:1;min-width:140px;background:transparent;color:#9090b0;border:1px solid rgba(255,255,255,0.1);border-radius:50px;padding:.65rem 1.25rem;font-family:"DM Sans",sans-serif;font-size:.875rem;font-weight:500;cursor:pointer}
+.btn-consent-save{flex:1;min-width:140px;background:transparent;color:#6c63ff;border:1px solid rgba(108,99,255,0.4);border-radius:50px;padding:.65rem 1.25rem;font-family:"DM Sans",sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;display:none}
+#consent-manage-link{text-align:center;margin-top:.75rem;font-size:.78rem;color:#5a5a7a;cursor:pointer}
+#cookie-settings-btn{position:fixed;bottom:1rem;left:1rem;z-index:9997;background:#1e1e2e;border:1px solid rgba(255,255,255,0.1);color:#9090b0;border-radius:50px;padding:6px 14px;font-size:.75rem;font-family:"DM Sans",sans-serif;cursor:pointer;display:none}
+</style>
+<div id="consent-overlay"></div>
+<div id="consent-banner">
+  <h3>🍪 We use cookies</h3>
+  <p>We use cookies to analyse traffic and show personalised ads via Google AdSense. If you are in the EEA, UK, or Switzerland, we need your consent. Read our <a href="/privacy.html">Privacy Policy</a>.</p>
+  <div class="consent-toggles" id="toggleSection" style="display:none">
+    <div class="toggle-row"><div class="toggle-info"><strong>Essential cookies</strong><span>Required for the site to work.</span></div><label class="toggle-switch"><input type="checkbox" checked disabled><span class="toggle-slider"></span></label></div>
+    <div class="toggle-row"><div class="toggle-info"><strong>Analytics cookies</strong><span>Google Analytics.</span></div><label class="toggle-switch"><input type="checkbox" id="toggle-analytics" checked><span class="toggle-slider"></span></label></div>
+    <div class="toggle-row"><div class="toggle-info"><strong>Advertising cookies</strong><span>Google AdSense.</span></div><label class="toggle-switch"><input type="checkbox" id="toggle-ads" checked><span class="toggle-slider"></span></label></div>
+  </div>
+  <div class="consent-btns">
+    <button class="btn-consent-all" onclick="acceptAll()">Accept all</button>
+    <button class="btn-consent-necessary" onclick="acceptNecessary()">Necessary only</button>
+    <button class="btn-consent-save" id="saveBtn" onclick="saveChoices()">Save choices</button>
+  </div>
+  <div id="consent-manage-link" onclick="showManage()">Manage preferences ▾</div>
+</div>
+<button id="cookie-settings-btn" onclick="reopenConsent()">🍪 Cookie settings</button>
+<script>
+(function(){
+  const KEY="instapdf_consent";
+  const saved=localStorage.getItem(KEY);
+  function isEEA(){const tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";return["Europe","Atlantic/Azores","Atlantic/Madeira","Atlantic/Canary","Arctic/Longyearbyen"].some(z=>tz.startsWith(z));}
+  function applyConsent(a,d){if(typeof gtag==="function"){gtag("consent","update",{analytics_storage:a?"granted":"denied",ad_storage:d?"granted":"denied",ad_user_data:d?"granted":"denied",ad_personalization:d?"granted":"denied"});}}
+  function hideBanner(){document.getElementById("consent-banner").style.display="none";document.getElementById("consent-overlay").style.display="none";document.getElementById("cookie-settings-btn").style.display="block";}
+  function showBanner(){document.getElementById("consent-banner").style.display="block";document.getElementById("consent-overlay").style.display="block";}
+  window.acceptAll=function(){localStorage.setItem(KEY,JSON.stringify({analytics:true,ads:true}));applyConsent(true,true);hideBanner();};
+  window.acceptNecessary=function(){localStorage.setItem(KEY,JSON.stringify({analytics:false,ads:false}));applyConsent(false,false);hideBanner();};
+  window.saveChoices=function(){const a=document.getElementById("toggle-analytics").checked;const d=document.getElementById("toggle-ads").checked;localStorage.setItem(KEY,JSON.stringify({analytics:a,ads:d}));applyConsent(a,d);hideBanner();};
+  window.showManage=function(){document.getElementById("toggleSection").style.display="flex";document.getElementById("toggleSection").style.flexDirection="column";document.getElementById("saveBtn").style.display="block";document.getElementById("consent-manage-link").style.display="none";};
+  window.reopenConsent=function(){document.getElementById("cookie-settings-btn").style.display="none";showBanner();};
+  if(saved){const p=JSON.parse(saved);applyConsent(p.analytics,p.ads);document.getElementById("cookie-settings-btn").style.display="block";}
+  else if(isEEA()){if(typeof gtag==="function"){gtag("consent","default",{analytics_storage:"denied",ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",wait_for_update:500});}window.addEventListener("DOMContentLoaded",showBanner);}
+  else{applyConsent(true,true);document.getElementById("cookie-settings-btn").style.display="block";}
+})();
+</script>
+
 </body>
 </html>
